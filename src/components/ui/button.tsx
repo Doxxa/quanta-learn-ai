@@ -18,6 +18,9 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        quantum: "bg-gradient-quantum text-primary-foreground hover:shadow-quantum transition-all duration-300 hover:scale-105",
+        circuit: "bg-gradient-circuit text-primary-foreground hover:shadow-glow border border-quantum-cyan/30",
+        glow: "bg-quantum-blue/20 text-quantum-glow border border-quantum-glow/40 hover:bg-quantum-blue/30 hover:shadow-glow backdrop-blur-sm",
       },
       size: {
         default: "h-10 px-4 py-2",
