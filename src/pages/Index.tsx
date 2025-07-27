@@ -4,6 +4,8 @@ import { Badge } from "@/components/ui/badge";
 import Header from "@/components/Header";
 import FeatureCard from "@/components/FeatureCard";
 import StatsCard from "@/components/StatsCard";
+import { useAuth } from "@/contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 import { 
   BookOpen, 
   Cpu, 
@@ -20,6 +22,8 @@ import circuitIcon from "@/assets/circuit-icon.jpg";
 import aiAssistant from "@/assets/ai-assistant.jpg";
 
 const Index = () => {
+  const { user } = useAuth();
+  const navigate = useNavigate();
   const [userName] = useState("Quantum Explorer");
 
   const features = [
@@ -110,10 +114,27 @@ const Index = () => {
                 hands-on simulations, and AI-powered assistance. Master the future of computing.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button variant="quantum" size="lg" className="text-lg px-8">
-                  Continue Learning
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Button>
+                {user ? (
+                  <Button 
+                    variant="quantum" 
+                    size="lg" 
+                    className="text-lg px-8"
+                    onClick={() => navigate('/learn')}
+                  >
+                    Continue Learning
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </Button>
+                ) : (
+                  <Button 
+                    variant="quantum" 
+                    size="lg" 
+                    className="text-lg px-8"
+                    onClick={() => navigate('/auth')}
+                  >
+                    Start Learning
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </Button>
+                )}
                 <Button variant="glow" size="lg" className="text-lg px-8">
                   <Brain className="w-5 h-5 mr-2" />
                   Ask Quanta AI
