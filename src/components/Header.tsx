@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Brain, Menu, User, LogOut } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Header = () => {
   const { user, signOut } = useAuth();
@@ -25,8 +25,13 @@ const Header = () => {
         
         <nav className="hidden md:flex items-center gap-6">
           <Button variant="ghost" className="text-foreground hover:text-quantum-blue" asChild>
-            <a href="/learn">Learn</a>
+            <Link to="/learn">Learn</Link>
           </Button>
+          {user && (
+            <Button variant="ghost" className="text-foreground hover:text-quantum-blue" asChild>
+              <Link to="/dashboard">Dashboard</Link>
+            </Button>
+          )}
           <Button variant="ghost" className="text-foreground hover:text-quantum-purple">
             Simulate
           </Button>

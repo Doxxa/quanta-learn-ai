@@ -1,4 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useAuth } from "@/contexts/AuthContext";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -18,7 +21,10 @@ import {
 } from "lucide-react";
 
 const Learn = () => {
+  const { user } = useAuth();
+  const { toast } = useToast();
   const [selectedModule, setSelectedModule] = useState(0);
+  const [userProgress, setUserProgress] = useState({ completed_lessons: 0, total_points: 0 });
 
   const modules = [
     {
@@ -77,6 +83,66 @@ const Learn = () => {
       icon: Star
     }
   ];
+
+  useEffect(() => {
+    if (user) {
+      fetchUserProgress();
+    }
+  }, [user]);
+
+  const fetchUserProgress = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('profiles')
+        .select('completed_lessons, total_points')
+        .eq('user_id', user?.id)
+        .maybeSingle();
+
+      if (error) throw error;
+      if (data) {
+        setUserProgress(data);
+      }
+    } catch (error) {
+      console.error('Error fetching user progress:', error);
+    }
+  };
+
+  const handleLessonComplete = async (moduleId: number) => {
+    if (!user) return;
+
+    try {
+      const newCompletedLessons = userProgress.completed_lessons + 1;
+      const newTotalPoints = userProgress.total_points + 25;
+
+      const { error } = await supabase
+        .from('profiles')
+        .update({
+          completed_lessons: newCompletedLessons,
+          total_points: newTotalPoints,
+          current_level: newCompletedLessons >= 8 ? 'advanced' : newCompletedLessons >= 4 ? 'intermediate' : 'beginner'
+        })
+        .eq('user_id', user.id);
+
+      if (error) throw error;
+
+      setUserProgress({
+        completed_lessons: newCompletedLessons,
+        total_points: newTotalPoints
+      });
+
+      toast({
+        title: "Lesson Completed!",
+        description: `You earned 25 points! Total: ${newTotalPoints}`,
+      });
+    } catch (error) {
+      console.error('Error updating progress:', error);
+      toast({
+        title: "Error",
+        description: "Failed to update progress",
+        variant: "destructive",
+      });
+    }
+  };
 
   const getStatusIcon = (status: string) => {
     switch (status) {
@@ -233,7 +299,11 @@ const Learn = () => {
                       Review Lesson
                     </Button>
                   ) : (
-                    <Button variant="quantum" className="w-full">
+                    <Button 
+                      variant="quantum" 
+                      className="w-full"
+                      onClick={() => handleLessonComplete(modules[selectedModule].id)}
+                    >
                       <Play className="w-4 h-4 mr-2" />
                       Continue Learning
                       <ArrowRight className="w-4 h-4 ml-2" />
@@ -250,10 +320,10 @@ const Learn = () => {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-quantum-blue">3/5</div>
-                  <div className="text-sm text-muted-foreground">Modules completed</div>
+                  <div className="text-2xl font-bold text-quantum-blue">{userProgress.completed_lessons}/12</div>
+                  <div className="text-sm text-muted-foreground">Lessons completed</div>
                 </div>
-                <Progress value={60} className="h-3" />
+                <Progress value={(userProgress.completed_lessons / 12) * 100} className="h-3" />
                 <div className="text-center">
                   <p className="text-sm text-muted-foreground">
                     You're making great progress!
