@@ -19,6 +19,7 @@ import {
   Zap,
   Globe
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Learn = () => {
   const { user } = useAuth();
@@ -29,55 +30,60 @@ const Learn = () => {
   const modules = [
     {
       id: 1,
+      slug: "qubits",
       title: "Introduction to Qubits",
       description: "Learn the fundamental building block of quantum computing",
       duration: "15 min",
       difficulty: "Beginner",
-      status: "completed",
-      progress: 100,
+      status: "available",
+      progress: 0,
       topics: ["What is a qubit?", "Classical vs Quantum bits", "Bloch sphere representation"],
       icon: Atom
     },
     {
       id: 2,
+      slug: "superposition",
       title: "Superposition",
       description: "Understanding how qubits can exist in multiple states simultaneously",
       duration: "20 min", 
       difficulty: "Beginner",
-      status: "completed",
-      progress: 100,
+      status: "available",
+      progress: 0,
       topics: ["Superposition principle", "Measurement collapse", "Probability amplitudes"],
       icon: Zap
     },
     {
       id: 3,
+      slug: "quantum-gates",
       title: "Quantum Gates",
       description: "The operations that manipulate qubits in quantum circuits",
       duration: "25 min",
       difficulty: "Intermediate",
-      status: "current",
-      progress: 60,
+      status: "available",
+      progress: 0,
       topics: ["Pauli gates (X, Y, Z)", "Hadamard gate", "Phase gates", "Multi-qubit gates"],
       icon: Globe
     },
     {
       id: 4,
+      slug: "entanglement",
       title: "Entanglement",
       description: "Explore the mysterious quantum correlation between particles",
       duration: "30 min",
       difficulty: "Intermediate", 
-      status: "locked",
+      status: "coming-soon",
       progress: 0,
       topics: ["Bell states", "EPR paradox", "Quantum correlations", "Non-locality"],
       icon: Globe
     },
     {
       id: 5,
+      slug: "quantum-algorithms",
       title: "Quantum Algorithms",
       description: "Famous algorithms that showcase quantum advantage",
       duration: "45 min",
       difficulty: "Advanced",
-      status: "locked", 
+      status: "coming-soon", 
       progress: 0,
       topics: ["Deutsch's algorithm", "Grover's search", "Shor's factoring", "Quantum supremacy"],
       icon: Star
@@ -148,10 +154,10 @@ const Learn = () => {
     switch (status) {
       case "completed":
         return <CheckCircle className="w-5 h-5 text-quantum-cyan" />;
-      case "current":
+      case "available":
         return <Play className="w-5 h-5 text-quantum-blue" />;
-      case "locked":
-        return <Lock className="w-5 h-5 text-muted-foreground" />;
+      case "coming-soon":
+        return <Clock className="w-5 h-5 text-muted-foreground" />;
       default:
         return <BookOpen className="w-5 h-5" />;
     }
@@ -288,25 +294,25 @@ const Learn = () => {
                 </div>
 
                 <div className="pt-4">
-                  {modules[selectedModule].status === "locked" ? (
+                  {modules[selectedModule].status === "coming-soon" ? (
                     <Button disabled className="w-full">
-                      <Lock className="w-4 h-4 mr-2" />
-                      Complete previous lessons
+                      <Clock className="w-4 h-4 mr-2" />
+                      Coming Soon
                     </Button>
                   ) : modules[selectedModule].status === "completed" ? (
-                    <Button variant="glow" className="w-full">
-                      <CheckCircle className="w-4 h-4 mr-2" />
-                      Review Lesson
+                    <Button variant="glow" className="w-full" asChild>
+                      <Link to={`/lesson/${modules[selectedModule].slug}`}>
+                        <CheckCircle className="w-4 h-4 mr-2" />
+                        Review Lesson
+                      </Link>
                     </Button>
                   ) : (
-                    <Button 
-                      variant="quantum" 
-                      className="w-full"
-                      onClick={() => handleLessonComplete(modules[selectedModule].id)}
-                    >
-                      <Play className="w-4 h-4 mr-2" />
-                      Continue Learning
-                      <ArrowRight className="w-4 h-4 ml-2" />
+                    <Button variant="quantum" className="w-full" asChild>
+                      <Link to={`/lesson/${modules[selectedModule].slug}`}>
+                        <Play className="w-4 h-4 mr-2" />
+                        Start Learning
+                        <ArrowRight className="w-4 h-4 ml-2" />
+                      </Link>
                     </Button>
                   )}
                 </div>
