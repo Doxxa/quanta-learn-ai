@@ -21,6 +21,8 @@ import {
   Edit3
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import ChatBot from '@/components/ChatBot';
+import QuizComponent from '@/components/QuizComponent';
 
 interface UserProfile {
   id: string;
@@ -334,6 +336,29 @@ const Dashboard = () => {
                 </div>
               </CardContent>
             </Card>
+          </div>
+        </div>
+
+        {/* AI Assistant and Quiz Section */}
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 mt-8">
+          <div>
+            <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
+              <div className="w-8 h-8 rounded-full bg-quantum-blue/20 flex items-center justify-center">
+                <User className="w-4 h-4 text-quantum-blue" />
+              </div>
+              QuantaBot Assistant
+            </h2>
+            <ChatBot />
+          </div>
+          
+          <div>
+            <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
+              <div className="w-8 h-8 rounded-full bg-quantum-purple/20 flex items-center justify-center">
+                <Trophy className="w-4 h-4 text-quantum-purple" />
+              </div>
+              Quick Quiz
+            </h2>
+            <QuizComponent />
           </div>
         </div>
       </div>
