@@ -1,58 +1,21 @@
-# Welcome to your Lovable project
+# 🌌 QuantaLearn
 
-## Project info
+**QuantaLearn** is an AI-powered mobile app that simplifies the learning of quantum computing through interactive lessons, a visual quantum circuit simulator, and an intelligent assistant that guides users in real time. Whether you're a beginner or a curious learner, QuantaLearn makes the complex world of qubits, gates, and entanglement engaging and accessible.
 
-**URL**: https://lovable.dev/projects/150cba97-92f8-4110-a417-897d88f9ea77
+---
 
-## How can I edit this code?
+## 🚀 Features
 
-There are several ways of editing your application.
+- 📚 **Interactive Lessons** – Learn quantum computing concepts step-by-step with visual examples and quizzes.
+- ⚛️ **Quantum Circuit Simulator** – Build, visualize, and experiment with quantum circuits in a drag-and-drop interface.
+- 🤖 **AI Assistant** – Ask questions about quantum theory, get instant explanations, and generate real Qiskit-like code samples.
+- 🔐 **User Accounts & Progress Tracking** – Secure login and learning progress sync via Supabase backend.
+- 📊 **Real-Time Feedback** – See how your circuits affect qubits and gain instant feedback on your learning.
+- 🧠 **Smart Recommendations** – Personalized learning paths based on your pace and understanding.
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/150cba97-92f8-4110-a417-897d88f9ea77) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
+## 🛠️ Tech Stack
 
 - Vite
 - TypeScript
@@ -60,14 +23,46 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
-## How can I deploy this project?
 
-Simply open [Lovable](https://lovable.dev/projects/150cba97-92f8-4110-a417-897d88f9ea77) and click on Share -> Publish.
+---
 
-## Can I connect a custom domain to my Lovable project?
+## 📸 Screenshots
 
-Yes, you can!
+> *(To b<img width="929" height="435" alt="Screenshot (112)" src="https://github.com/user-attachments/assets/8df53c82-a1a7-4a57-a43a-da86ad45d8f2" />
+e added)*  
+<img width="919" height="429" alt="Screenshot (116)" src="https://github.com/user-attachments/assets/85d71c66-171d-47a8-b6ee-9fe423628c5b" />
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+---
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## 📦 Installation
+
+> QuantaLearn is currently under development and will be available for public download soon.
+
+---
+
+## 🧠 Inspiration
+
+Quantum computing is often perceived as complex and unreachable. QuantaLearn was created to break those barriers and offer an intuitive entry point for anyone interested in the field, using visuals, simulations, and AI-enhanced support.
+
+---
+
+## 📈 Roadmap
+
+- [ ] Add multiplayer quantum challenges
+- [ ] Integrate real quantum hardware API (e.g., IBM Q Experience)
+- [ ] Translate lessons into multiple languages
+- [ ] Launch desktop and web versions
+
+---
+
+## 🤝 Contributing
+
+We welcome ideas, feedback, and contributions once the project goes public. Stay tuned for updates.
+
+---
+
+
+> _"The quantum world is strange, but learning it shouldn't be. QuantaLearn makes it yours."_
+
+
+
