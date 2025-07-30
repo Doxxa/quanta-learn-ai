@@ -12,7 +12,8 @@ import {
   Shuffle,
   Target,
   Brain,
-  RotateCcw
+  RotateCcw,
+  Play
 } from "lucide-react";
 
 const SuperpositionLesson = ({ onComplete }: { onComplete: () => void }) => {
@@ -266,6 +267,126 @@ const SuperpositionLesson = ({ onComplete }: { onComplete: () => void }) => {
               Superposition allows quantum computers to process multiple possibilities 
               simultaneously, providing exponential speedups for certain algorithms!
             </p>
+          </div>
+
+          <div className="bg-card/50 border border-border/20 rounded-lg p-4">
+            <h4 className="font-semibold mb-3 flex items-center gap-2">
+              <Play className="w-5 h-5 text-red-500" />
+              Video Resources
+            </h4>
+            <div className="space-y-2">
+              <a 
+                href="https://www.youtube.com/watch?v=JRIPV0dPAd4" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block text-quantum-blue hover:text-quantum-purple transition-colors"
+              >
+                📺 "Quantum Superposition Explained" by Veritasium
+              </a>
+              <a 
+                href="https://www.youtube.com/watch?v=iVpXrbZ4bnU" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block text-quantum-blue hover:text-quantum-purple transition-colors"
+              >
+                📺 "Superposition and Measurement" by MinutePhysics
+              </a>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      title: "Quantum Computing Applications",
+      content: (
+        <div className="space-y-6">
+          <div className="bg-gradient-to-r from-green-500/10 to-blue-500/10 rounded-lg p-4">
+            <p className="text-muted-foreground leading-relaxed">
+              Superposition is the foundation that enables quantum computers to solve certain 
+              problems exponentially faster than classical computers. Here's where it's making an impact:
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <Card className="border-border/50 hover:shadow-lg transition-shadow">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-lg flex items-center gap-2">
+                  <Target className="w-5 h-5 text-blue-500" />
+                  Database Search
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-2">
+                <p className="text-sm">Grover's algorithm uses superposition to search:</p>
+                <ul className="text-sm space-y-1 text-muted-foreground">
+                  <li>• Searches unsorted databases √N times faster</li>
+                  <li>• 1 million items: 1000 steps vs 500,000</li>
+                  <li>• Used in optimization problems</li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            <Card className="border-border/50 hover:shadow-lg transition-shadow">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-lg flex items-center gap-2">
+                  <Brain className="w-5 h-5 text-quantum-purple" />
+                  Machine Learning
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-2">
+                <p className="text-sm">Quantum ML exploits superposition for:</p>
+                <ul className="text-sm space-y-1 text-muted-foreground">
+                  <li>• Processing multiple data points simultaneously</li>
+                  <li>• Feature mapping in high-dimensional spaces</li>
+                  <li>• Quantum neural networks</li>
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="bg-quantum-cyan/10 border border-quantum-cyan/20 rounded-lg p-4">
+            <h4 className="font-semibold text-quantum-cyan mb-2 flex items-center gap-2">
+              <Zap className="w-5 h-5" />
+              Real-World Impact
+            </h4>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-3">
+              <div className="bg-background/30 p-3 rounded">
+                <h5 className="font-medium mb-1">Drug Discovery</h5>
+                <p className="text-xs text-muted-foreground">Simulate molecular interactions in superposition</p>
+              </div>
+              <div className="bg-background/30 p-3 rounded">
+                <h5 className="font-medium mb-1">Financial Modeling</h5>
+                <p className="text-xs text-muted-foreground">Portfolio optimization with quantum advantage</p>
+              </div>
+              <div className="bg-background/30 p-3 rounded">
+                <h5 className="font-medium mb-1">Cryptography</h5>
+                <p className="text-xs text-muted-foreground">Breaking RSA encryption exponentially faster</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-card/50 border border-border/20 rounded-lg p-4">
+            <h4 className="font-semibold mb-3 flex items-center gap-2">
+              <Play className="w-5 h-5 text-red-500" />
+              Applications in Action
+            </h4>
+            <div className="space-y-2">
+              <a 
+                href="https://www.youtube.com/watch?v=lvTqbM5Dq4Q" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block text-quantum-blue hover:text-quantum-purple transition-colors"
+              >
+                📺 "Quantum Computers in Drug Discovery" by IBM
+              </a>
+              <a 
+                href="https://www.youtube.com/watch?v=OWJCfOvochA" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block text-quantum-blue hover:text-quantum-purple transition-colors"
+              >
+                📺 "Quantum Machine Learning" by Google AI
+              </a>
+            </div>
           </div>
         </div>
       )

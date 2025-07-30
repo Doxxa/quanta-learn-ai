@@ -9,6 +9,7 @@ import { ArrowLeft } from "lucide-react";
 import QubitLesson from "@/components/lessons/QubitLesson";
 import SuperpositionLesson from "@/components/lessons/SuperpositionLesson";
 import QuantumGatesLesson from "@/components/lessons/QuantumGatesLesson";
+import EntanglementLesson from "@/components/lessons/EntanglementLesson";
 
 const LessonViewer = () => {
   const { lessonId } = useParams();
@@ -21,12 +22,14 @@ const LessonViewer = () => {
     'qubits': QubitLesson,
     'superposition': SuperpositionLesson,
     'quantum-gates': QuantumGatesLesson,
+    'entanglement': EntanglementLesson,
   };
 
   const lessonTitles: Record<string, string> = {
     'qubits': 'Introduction to Qubits',
     'superposition': 'Quantum Superposition',
     'quantum-gates': 'Quantum Gates',
+    'entanglement': 'Quantum Entanglement',
   };
 
   const handleLessonComplete = async () => {
