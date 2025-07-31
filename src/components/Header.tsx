@@ -32,6 +32,9 @@ const Header = () => {
               <Link to="/dashboard">Dashboard</Link>
             </Button>
           )}
+          <Button variant="ghost" className="text-foreground hover:text-quantum-purple" asChild>
+            <Link to="/social">Social</Link>
+          </Button>
           <Button variant="ghost" className="text-foreground hover:text-quantum-purple">
             Simulate
           </Button>
